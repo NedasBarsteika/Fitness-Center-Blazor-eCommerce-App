@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Images\basketball.jpg" />
+    <Content Remove="wwwroot\Images\dumbbell_set.jpg" />
+    <Content Remove="wwwroot\Images\protein_powder.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ecommerce.Model\Ecommerce.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Components\Pages\ProductList.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Components\Pages\ProductList.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\basketball.jpg" />
+    <None Include="wwwroot\Images\dumbbell_set.jpg" />
+    <None Include="wwwroot\Images\protein_powder.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Font.Awesome" Version="5.15.4" />
+  </ItemGroup>
+
+</Project>

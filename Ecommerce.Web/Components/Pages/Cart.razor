@@ -1,0 +1,103 @@
+﻿@page "/cart/{ProductId:int}"
+@using Ecommerce.Model
+@inject HttpClient Http
+@inject IJSRuntime JsRuntime
+
+<PageTitle>Cart</PageTitle>
+
+<h3>Cart</h3>
+
+<form>
+    <div class="form-group mb-4">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="text" class="form-control" @bind="Model.Email">
+    </div>
+    <div class="form-group mb-4">
+        <label for="exampleInputName1">Name</label>
+        <input type="text" class="form-control" @bind="Model.CustomerName">
+    </div>
+    <div class="form-group mb-4">
+        <label for="exampleInputAddress1">Delivery Address</label>
+        <input type="text" class="form-control" @bind="Model.Address">
+    </div>
+    <div class="form-group mb-4">
+        <label for="exampleInputCreditCard1">Credit Card</label>
+        <input type="number" class="form-control" @bind="Model.CreditCard">
+    </div>
+    <div class="form-group mb-4">
+        <label for="exampleInputName1">Product Photo</label>
+        <div>
+            <img src="/Images/@Product.PhotoName" width="300" height="300" class="rounded-top" asp-append-version="true" alt="Picture" />
+        </div>
+    </div>
+    <div class="form-group mb-4">
+        <label for="exampleInputName1">Product Name</label>
+        <input type="text" class="form-control" @bind="Product.Name" disabled>
+    </div>
+    <div class="form-group mb-4">
+        <label for="exampleInputName1">Product Description</label>
+        <input type="text" class="form-control" @bind="Product.About" disabled>
+    </div>
+    <div class="form-group mb-4">
+        <label for="exampleInputPassword1">Quantity</label>
+        <input type="number" class="form-control" @bind="Model.Quantity">
+    </div>
+
+    <button type="button" class="btn btn-primary" @onclick="CreateOrder">Create order</button>
+</form>
+
+@code {
+    [Parameter]
+    public int ProductId { get; set; }
+    private OrderModel Model = new OrderModel();
+    private ProductModel Product = new ProductModel();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Model.ProductId = ProductId;
+        Product = await Http.GetFromJsonAsync<ProductModel>($"https://localhost:7261/api/product/{ProductId}");
+    }
+    private async Task CreateOrder()
+    {
+        // Checking if entered info is valid
+        if (string.IsNullOrWhiteSpace(Model.Email))
+        {
+            await JsRuntime.InvokeVoidAsync("alert", "Please enter your email");
+            return;
+        }
+        string[] emailParts = Model.Email.Split('@');
+        if (emailParts.Length != 2 || string.IsNullOrWhiteSpace(emailParts[0]) || string.IsNullOrWhiteSpace(emailParts[1]))
+        {
+            await JsRuntime.InvokeVoidAsync("alert", "Email is not valid");
+            return;
+        }
+        if (string.IsNullOrWhiteSpace(Model.CustomerName))
+        {
+            await JsRuntime.InvokeVoidAsync("alert", "Please enter your name");
+            return;
+        }
+        if (string.IsNullOrWhiteSpace(Model.Address))
+        {
+            await JsRuntime.InvokeVoidAsync("alert", "Please enter your address");
+            return;
+        }
+        if (string.IsNullOrWhiteSpace(Model.CreditCard))
+        {
+            await JsRuntime.InvokeVoidAsync("alert", "Please enter your credit card information");
+            return;
+        }
+        if (Model.Quantity <= 0 || Model.Quantity > Product.Quantity)
+        {
+            await JsRuntime.InvokeVoidAsync("alert", $"Order quantity must be between 1 and {Product.Quantity}");
+            return;
+        }
+
+        // If entered info is valid
+        var res = await Http.PostAsJsonAsync<OrderModel>("https://localhost:7146/api/order", Model);
+
+        if (res.IsSuccessStatusCode)
+        {
+            await JsRuntime.InvokeVoidAsync("alert", "Order successfully created");
+        }
+    }
+}

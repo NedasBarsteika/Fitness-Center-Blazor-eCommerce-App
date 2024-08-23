@@ -1,0 +1,12 @@
+C:\Users\Desctopas\OneDrive\Coding Projects\C#\Ecommerce\Ecommerce.Model\bin\Debug\net8.0\Ecommerce.Model.deps.json
+C:\Users\Desctopas\OneDrive\Coding Projects\C#\Ecommerce\Ecommerce.Model\bin\Debug\net8.0\Ecommerce.Model.dll
+C:\Users\Desctopas\OneDrive\Coding Projects\C#\Ecommerce\Ecommerce.Model\bin\Debug\net8.0\Ecommerce.Model.pdb
+C:\Users\Desctopas\OneDrive\Coding Projects\C#\Ecommerce\Ecommerce.Model\obj\Debug\net8.0\Ecommerce.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Desctopas\OneDrive\Coding Projects\C#\Ecommerce\Ecommerce.Model\obj\Debug\net8.0\Ecommerce.Model.AssemblyInfoInputs.cache
+C:\Users\Desctopas\OneDrive\Coding Projects\C#\Ecommerce\Ecommerce.Model\obj\Debug\net8.0\Ecommerce.Model.AssemblyInfo.cs
+C:\Users\Desctopas\OneDrive\Coding Projects\C#\Ecommerce\Ecommerce.Model\obj\Debug\net8.0\Ecommerce.Model.csproj.CoreCompileInputs.cache
+C:\Users\Desctopas\OneDrive\Coding Projects\C#\Ecommerce\Ecommerce.Model\obj\Debug\net8.0\Ecommerce.Model.sourcelink.json
+C:\Users\Desctopas\OneDrive\Coding Projects\C#\Ecommerce\Ecommerce.Model\obj\Debug\net8.0\Ecommerce.Model.dll
+C:\Users\Desctopas\OneDrive\Coding Projects\C#\Ecommerce\Ecommerce.Model\obj\Debug\net8.0\refint\Ecommerce.Model.dll
+C:\Users\Desctopas\OneDrive\Coding Projects\C#\Ecommerce\Ecommerce.Model\obj\Debug\net8.0\Ecommerce.Model.pdb
+C:\Users\Desctopas\OneDrive\Coding Projects\C#\Ecommerce\Ecommerce.Model\obj\Debug\net8.0\ref\Ecommerce.Model.dll
